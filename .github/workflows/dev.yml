@@ -1,0 +1,15 @@
+name: "Deploying To Dev Environment"
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          api-key: ${{ secrets.POSTMAN_API_KEY }}"

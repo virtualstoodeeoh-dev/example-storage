@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema.json
+
+folder: "Users"
+description: |
+  Everything within MockAPI user system management can be performed here. This includes creating, updating, and deleting user's account.
+
+  All endpoints are paginated. You can use the `page` and `limit` query parameters to control the pagination.
+
+  To learn more about the user's management system and how to use it, please refer to the [documentation](https://mockapi.io/docs).
+items:
+  - name: "Get All Users"
+    type: "request"
+    url: "{{baseUrl}}/users"
+    method: "GET"
+    description: |
+      This endpoint returns all users within the system.
+
+      The response is paginated. You can use the `page` and `limit` query parameters to control the pagination.
+
+      You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
+
+      Only `ADMIN` users can access this endpoint.
+    body: { "page": 1, "limit": 10 }
+    headers:
+      - key: "Content-Type"
+        value: "application/json"
+      - key: "Authorization"
+        value: "Bearer {{apiKey}}"
+    responses:
+      - name: "Users Found"
+        status: 200
+        body:
+          [
+            { "id": 1, "name": "Sifat Dipta", type: "Frontend Developer" },
+            { "id": 2, "name": "User 2", type: "Backend Developer" },
+          ]
+      - name: "Not Authenticated"
+        status: 401
+        body: { "error": "You must be authenticated" }
+      - name: "Not Authorized"
+        status: 403
+        body: { "error": "You are not authorized to access this endpoint" }
+  - name: "Get A Specific User"
+    type: "request"
+    url: "{{baseUrl}}/users/1"
+    method: "GET"
+    description: |
+      This endpoint returns a specific user within the system.
+
+      The `id` parameter is the ID of the user you want to retrieve.
+
+      You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
+    headers:
+      - key: "Content-Type"
+        value: "application/json"
+      - key: "Authorization"
+        value: "Bearer {{apiKey}}"
+    responses:
+      - name: "User Found"
+        status: 200
+        body: { "id": 1, "name": "Sifat Dipta", type: "Frontend Developer" }
+      - name: "User Not Found"
+        status: 404
+        body: { "error": "User Not Found" }
+      - name: "Not Authenticated"
+        status: 401
+        body: { "error": "You must be authenticated" }
+  - name: "Create A New User"
+    type: "request"
+    url: "{{baseUrl}}/users"
+    method: "POST"
+    description: |
+      You can sign up a new user by providing the `name` and `type` of the user.
+
+      You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
+    body: { "name": "Bryan Medina", "type": "Front End Developer" }
+    headers:
+      - key: "Content-Type"
+        value: "application/json"
+      - key: "Authorization"
+        value: "Bearer {{apiKey}}"
+    responses:
+      - name: "User Created"
+        status: 201
+        body: { "id": 3, "name": "Bryan Medina", type: "Front End Developer" }
+      - name: "Not Authenticated"
+        status: 401
+        body: { "error": "You must be authenticated" }
+  - name: "Settings"
+    type: "folder"
+    description: |
+      Manage user settings here. This includes updating the user's name and type. You can also delete the user's account, connect to social media, and more.
+    items:
+      - name: "Update User"
+        type: "request"
+        url: "{{baseUrl}}/users/1"
+        method: "PUT"
+        description: |
+          You can update a user's information by providing the `name` and `type` of the user.
+
+          You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
+        body: { "name": "Sifat Dipta", "type": "Full Stack Developer" }
+        headers:
+          - key: "Content-Type"
+            value: "application/json"
+          - key: "Authorization"
+            value: "Bearer {{apiKey}}"
+        responses:
+          - name: "User Updated"
+            status: 200
+            body:
+              { "id": 1, "name": "Sifat Dipta", type: "Full Stack Developer" }
+          - name: "User Not Found"
+            status: 404
+            body: { "error": "User Not Found" }
+          - name: "Not Authenticated"
+            status: 401
+            body: { "error": "You must be authenticated" }
+      - name: "Delete User"
+        type: "request"
+        url: "{{baseUrl}}/users/1"
+        method: "DELETE"
+        description: |
+          You can delete a user's account by providing the `id` of the user.
+
+          You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
+        headers:
+          - key: "Content-Type"
+            value: "application/json"
+          - key: "Authorization"
+            value: "Bearer {{apiKey}}"
+        responses:
+          - name: "User Deleted"
+            status: 204
+          - name: "User Not Found"
+            status: 404
+            body: { "error": "User Not Found" }
+          - name: "Not Authenticated"
+            status: 401
+            body: { "error": "You must be authenticated" }

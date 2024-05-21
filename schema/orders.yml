@@ -1,6 +1,5 @@
-# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema.json
+# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema-1.0.2.json
 
-collection: "Development"
 folder: "Orders"
 description: |
   Everything within MockAPI order system management can be performed here. This includes creating, updating, and deleting orders.

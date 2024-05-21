@@ -1,5 +1,5 @@
-# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema.json
-collection: "Development"
+# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema-1.0.2.json
+
 folder: "Users"
 description: |
   Everything within MockAPI user system management can be performed here. This includes creating, updating, and deleting user's account.

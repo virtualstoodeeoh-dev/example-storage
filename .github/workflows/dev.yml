@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        name: "Checkout Repository"
       - uses: tellihealth/gen-postman-documentation@1.0.1
+        name: "Generate Postman Documentation"
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}"
           collection: "Development"

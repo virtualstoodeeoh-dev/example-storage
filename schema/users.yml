@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema-1.0.2.json
+# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema-1.0.3.json
 
 folder: "Users"
 description: |
@@ -30,13 +30,10 @@ items:
       - name: "Users Found"
         status: 200
         body:
-          {
-            users:
-              [
-                { "id": 1, "name": "Sifat Dipta", type: "Frontend Developer" },
-                { "id": 2, "name": "User 2", type: "Backend Developer" },
-              ],
-          }
+          [
+            { "id": 1, "name": "Sifat Dipta", type: "Frontend Developer" },
+            { "id": 2, "name": "User 2", type: "Backend Developer" },
+          ]
       - name: "Not Authenticated"
         status: 401
         body: { "error": "You must be authenticated" }
@@ -76,7 +73,7 @@ items:
       You can sign up a new user by providing the `name` and `type` of the user.
 
       You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
-    body: { "name": "Bryan Medina", "type": "Front End Developer" }
+    body: { name: "Bryan Medina", "type": "Front End Developer" }
     headers:
       - key: "Content-Type"
         value: "application/json"

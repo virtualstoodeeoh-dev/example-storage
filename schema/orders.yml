@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://gen-postman-documentation.s3.amazonaws.com/schema.json
+
+collection: "Development"
+folder: "Orders"
+description: |
+  Everything within MockAPI order system management can be performed here. This includes creating, updating, and deleting orders.
+
+  All endpoints are paginated. You can use the `page` and `limit` query parameters to control the pagination.
+items:
+  - name: "Get All Orders"
+    type: "request"
+    url: "{{baseUrl}}/orders"
+    method: "GET"
+    description: |
+      This endpoint returns all orders within the system.
+
+      The response is paginated. You can use the `page` and `limit` query parameters to control the pagination.
+    body: { "page": 1, "limit": 10 }
+    headers:
+      - key: "Content-Type"
+        value: "application/json"
+      - key: "Authorization"
+        value: "Bearer {{apiKey}}"
+    responses:
+      - name: "Orders Found"
+        status: 200
+        body:
+          {
+            users:
+              [
+                { id: 1, user: "Sifat Dipta", total: 34, tax: 1 },
+                { id: 2, user: "User 2", total: 23, tax: 2 },
+              ],
+          }
+      - name: "Not Authenticated"
+        status: 401
+        body: { "error": "You must be authenticated" }
+  - name: "Get A Specific Order"
+    type: "request"
+    url: "{{baseUrl}}/orders/1"
+    method: "GET"
+    description: |
+      This endpoint returns a specific order within the system.
+
+      The `id` parameter is the ID of the order you want to retrieve.
+    headers:
+      - key: "Content-Type"
+        value: "application/json"
+      - key: "Authorization"
+        value: "Bearer {{apiKey}}"
+    responses:
+      - name: "Order Found"
+        status: 200
+        body: { order: { id: 1, user: "Sifat Dipta", total: 34, tax: 1 } }
+      - name: "Not Found"
+        status: 404
+        body: { "error": "Order not found" }
+      - name: "Not Authenticated"
+        status: 401
+        body: { "error": "You must be authenticated" }

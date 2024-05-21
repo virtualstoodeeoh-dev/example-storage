@@ -12,8 +12,14 @@ jobs:
       - uses: actions/checkout@v2
         name: "Checkout Repository"
       - uses: tellihealth/gen-postman-documentation@1.0.1
-        name: "Generate Postman Documentation"
+        name: "Generate Postman Documentation - Users"
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           collection: "Production"
-          yml: "postman.yml"
+          yml: "schema/users.yml"
+      - uses: tellihealth/gen-postman-documentation@1.0.1
+        name: "Generate Postman Documentation - Orders"
+        with:
+          api-key: ${{ secrets.POSTMAN_API_KEY }}
+          collection: "Production"
+          yml: "schema/orders.yml"

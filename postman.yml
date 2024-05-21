@@ -30,10 +30,13 @@ items:
       - name: "Users Found"
         status: 200
         body:
-          [
-            { "id": 1, "name": "Sifat Dipta", type: "Frontend Developer" },
-            { "id": 2, "name": "User 2", type: "Backend Developer" },
-          ]
+          {
+            users:
+              [
+                { "id": 1, "name": "Sifat Dipta", type: "Frontend Developer" },
+                { "id": 2, "name": "User 2", type: "Backend Developer" },
+              ],
+          }
       - name: "Not Authenticated"
         status: 401
         body: { "error": "You must be authenticated" }

@@ -89,55 +89,56 @@ items:
       - name: "Not Authenticated"
         status: 401
         body: { "error": "You must be authenticated" }
-  # - name: "Settings"
-  #   type: "folder"
-  #   description: |
-  #     Manage user settings here. This includes updating the user's name and type. You can also delete the user's account, connect to social media, and more.
-  #   items:
-  #     - name: "Update User"
-  #       type: "request"
-  #       url: "{{baseUrl}}/users/1"
-  #       method: "PUT"
-  #       description: |
-  #         You can update a user's information by providing the `name` and `type` of the user.
+  - name: "Settings"
+    type: "folder"
+    description: |
+      Manage user settings here. This includes updating the user's name and type. You can also delete the user's account, connect to social media, and more.
+    items:
+      - name: "Update User"
+        type: "request"
+        url: "{{baseUrl}}/users/1"
+        method: "PUT"
+        description: |
+          You can update a user's information by providing the `name` and `type` of the user.
 
-  #         You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
-  #       body: { "name": "Sifat Dipta", "type": "Full Stack Developer" }
-  #       headers:
-  #         - key: "Content-Type"
-  #           value: "application/json"
-  #         - key: "Authorization"
-  #           value: "Bearer {{apiKey}}"
-  #       responses:
-  #         - name: "User Updated"
-  #           status: 200
-  #           body:
-  #             { "id": 1, "name": "Sifat Dipta", type: "Full Stack Developer" }
-  #         - name: "User Not Found"
-  #           status: 404
-  #           body: { "error": "User Not Found" }
-  #         - name: "Not Authenticated"
-  #           status: 401
-  #           body: { "error": "You must be authenticated" }
-  #     - name: "Delete User"
-  #       type: "request"
-  #       url: "{{baseUrl}}/users/1"
-  #       method: "DELETE"
-  #       description: |
-  #         You can delete a user's account by providing the `id` of the user.
+          You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
+        body: { "name": "Sifat Dipta", "type": "Full Stack Developer" }
+        headers:
+          - key: "Content-Type"
+            value: "application/json"
+          - key: "Authorization"
+            value: "Bearer {{apiKey}}"
+        responses:
+          - name: "User Updated"
+            status: 200
+            body:
+              { "id": 1, "name": "Sifat Dipta", type: "Full Stack Developer" }
+          - name: "User Not Found"
+            status: 404
+            body: { "error": "User Not Found" }
+          - name: "Not Authenticated"
+            status: 401
+            body: { "error": "You must be authenticated" }
+      - name: "Delete User"
+        type: "request"
+        url: "{{baseUrl}}/users/1"
+        method: "DELETE"
+        description: |
+          You can delete a user's account by providing the `id` of the user.
 
-  #         You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
-  #       headers:
-  #         - key: "Content-Type"
-  #           value: "application/json"
-  #         - key: "Authorization"
-  #           value: "Bearer {{apiKey}}"
-  #       responses:
-  #         - name: "User Deleted"
-  #           status: 204
-  #         - name: "User Not Found"
-  #           status: 404
-  #           body: { "error": "User Not Found" }
-  #         - name: "Not Authenticated"
-  #           status: 401
-  #           body: { "error": "You must be authenticated" }
+          You do need to be authenticated to access this endpoint, which can be done by providing a **valid API key** in the `Authorization` header.
+        headers:
+          - key: "Content-Type"
+            value: "application/json"
+          - key: "Authorization"
+            value: "Bearer {{apiKey}}"
+        responses:
+          - name: "User Deleted"
+            status: 204
+            body: { "message": "User Deleted Successfully" }
+          - name: "User Not Found"
+            status: 404
+            body: { "error": "User Not Found" }
+          - name: "Not Authenticated"
+            status: 401
+            body: { "error": "You must be authenticated" }

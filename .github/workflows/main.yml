@@ -16,3 +16,4 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}"
           collection: "Production"
+          yml: "postman.yml"
